@@ -7,7 +7,7 @@ SAVEFILE = "relay_state_file.dat"
 if (os.name == 'nt'):
   SERIAL_PORT = 'COM5'
 else:
-  SERIAL_PORT = '/dev/serial/???'
+  SERIAL_PORT = '/dev/cu.usbmodem1421'
 
 def update_relay(state):
   ser = serial.Serial(SERIAL_PORT, 9600)
