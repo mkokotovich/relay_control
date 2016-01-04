@@ -7,7 +7,7 @@ SAVEFILE = "relay_state_file.dat"
 if (os.name == 'nt'):
   SERIAL_PORT = 'COM5'
 else:
-  SERIAL_PORT = '/dev/cu.usbmodem1421'
+  SERIAL_PORT = '/dev/cu.usbmodem801141'
 
 def update_relay(state):
   ser = serial.Serial(SERIAL_PORT, 9600)
@@ -33,6 +33,10 @@ def write_state_to_file(filename, state):
   with open(filename, "w+") as text_file:
     text_file.write(state)
 
+def update_relay_state(new_state):
+  old_state = get_old_state_from_file(SAVEFILE)
+  update_if_needed(new_state, old_state)
+  write_state_to_file(SAVEFILE, new_state)
 
 def main():
   toggle = False
