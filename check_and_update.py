@@ -18,6 +18,8 @@ JIRA_SERVER = 'https://jira.community.veritas.com'
 JIRA_USER="matthew.kokotovich"
 JIRA_PASSWORD=""
 
+UPDATE_FREQUENCY=15
+
 
 def connect_to_jira():
     jira_obj = JIRA(server=JIRA_SERVER, basic_auth=(JIRA_USER, JIRA_PASSWORD))
@@ -64,4 +66,4 @@ def start():
 JIRA_PASSWORD = getpass.getpass("Please enter the jira password for {}: ".format(JIRA_USER))
 while True:
     start()
-    time.sleep(30)
+    time.sleep(UPDATE_FREQUENCY)
